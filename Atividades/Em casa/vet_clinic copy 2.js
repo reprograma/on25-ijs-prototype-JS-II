@@ -48,7 +48,7 @@ class Parrot extends Animal {
   }
 }
 
-let jade = new Parrot("Jade", 13, "verde", false, false);
+let jade = new Parrot("Jade", 13, "verde");
 jade.falar();
 jade.falar();
 jade.checkups()
