@@ -15,36 +15,36 @@ class Animal {
   }
 }
 
-class Gato extends Animal {
-  constructor(nome, idade, cor, externo, social, checkup) {
-    super(nome, idade, cor, checkup);
-    this.externo = externo;
-    this.social = social;
-  }
+// class Gato extends Animal {
+//   constructor(nome, idade, cor, externo, social, checkup) {
+//     super(nome, idade, cor, checkup);
+//     this.externo = externo;
+//     this.social = social;
+//   }
 
-  miar() {
-    console.log("miau miau miau");
-  }
+//   miar() {
+//     console.log("miau miau miau");
+//   }
 
-  alimentar() {
-    this.social = true;
-    console.log(`Miau comi todo o sache. Agora quero carinho`);
-  }
+//   alimentar() {
+//     this.social = true;
+//     console.log(`Miau comi todo o sache. Agora quero carinho`);
+//   }
 
-  acariciar() {
-    if (this.social) {
-      console.log(`Rororon`);
-    } else {
-      console.log("dont touch me zzzzzzzz");
-    }
-  }
-}
+//   acariciar() {
+//     if (this.social) {
+//       console.log(`Rororon`);
+//     } else {
+//       console.log("dont touch me zzzzzzzz");
+//     }
+//   }
+// }
 
-let meowth = new Gato("Meowth", 24, "black", true, false);
-meowth;
-meowth.miar();
-meowth.checkups();
-meowth.acariciar();
-meowth.alimentar();
-meowth.acariciar();
+// let meowth = new Gato("Meowth", 24, "black", true, false);
+// meowth;
+// meowth.miar();
+// meowth.checkups();
+// meowth.acariciar();
+// meowth.alimentar();
+// meowth.acariciar();
 
