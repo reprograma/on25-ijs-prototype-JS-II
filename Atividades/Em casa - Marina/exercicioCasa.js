@@ -20,6 +20,7 @@ class Animais {
   }
 }
 
+//construtor Domesticos
 class Domesticos extends Animais {
   constructor(nome, idade, cor, castrado) {
     super(nome, idade, cor);
@@ -77,6 +78,7 @@ nina.acariciar(); // nina não é sociável, ele(a) está silvando. Alimente-o(a
 nina.alimentar("peixe"); //Você alimentou nina e agora ele é sociável.
 nina.acariciar(); //ron ron ron
 
+//construtor Cachorro
 class Cachorro extends Domesticos {
   #ferimento;
   constructor(nome, idade, cor, castrado, raca, ferido, ferimento) {
@@ -112,6 +114,7 @@ pancho.brincar(); //O cachorro está escondido por estar ferido: machucou a pata
 pancho.ferido = false;
 pancho.brincar(); // Não estou ferido e adoro brincar
 
+//construtor Hamster
 class Hamster extends Animais {
   constructor(nome, idade, cor, tipo) {
     super(nome, idade, cor);
@@ -139,6 +142,7 @@ hamtaro.brincar(); //Você está brincando com hamtaro...
 hamtaro.acariciar(); // Você está acariciando hamtaro!
 hamtaro.alimentar(); // Você está alimentando hamtaro!
 
+//construtor Papagaio
 class Papagaio extends Animais {
   constructor(nome, idade, cor) {
     super(nome, idade, cor);
