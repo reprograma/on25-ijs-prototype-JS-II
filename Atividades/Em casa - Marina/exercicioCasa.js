@@ -124,9 +124,9 @@ class Hamster extends Animais {
   consultar(data) {
     if (!this.tranquilo) {
       this.brincar();
-      console.log("...Uma nova data de consulta foi adicionada.");
     }
     super.consultar(data);
+    console.log("...Uma nova data de consulta foi adicionada.");
   }
   brincar() {
     super.brincar();
