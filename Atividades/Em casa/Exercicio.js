@@ -94,6 +94,7 @@ class Dog extends Animal {
         this.#ferido = ferido
         this.raça = raça
         this.especie = "cachorro"
+        Animal.chama.unshift(this.nome)
     }
     latir() {
         console.log("au au")
