@@ -29,11 +29,13 @@ Nossa veterinária agora atende quatro espécies diferentes de animais: dois dom
 
  Resposta: 
  
- class Cat extends Animal {
+class Cat extends Animal {
+
     constructor(nome, idade, cor, castrado, externo) {
         super(nome, idade, cor)
         this.castrado = castrado
         this.externo = externo
+        this.especie = "gato"
     }
     miar() {
         console.log("miau miau")
@@ -54,6 +56,7 @@ Nossa veterinária agora atende quatro espécies diferentes de animais: dois dom
     alimentar(value) {
         if (value == "peixe" || value == "frango" || value == "sachê") {
             console.log(`${this.nome}, agora confia em você!`)
+            Animal.chama.unshift(this.nome)
             return this.social = true
         } else {
             console.log(`${this.nome}, não gosta de ${value}`)
@@ -72,6 +75,8 @@ Nossa veterinária agora atende quatro espécies diferentes de animais: dois dom
     }
 
 }
+
+// let Lua = new Cat("Lua", 2, "preta", true, false)
 
  2. Cachorro
  ```
@@ -96,13 +101,18 @@ Nossa veterinária agora atende quatro espécies diferentes de animais: dois dom
  ```
   - Cachorros costumam esconder quando estão feridos. Use um campo privado para essa informação, e só a exiba ao tentar `brincar()` com um cãozinho que está ferido.
 
-  RESPOSTA: class Dog extends Animal {
+  RESPOSTA: 
+
+  class Dog extends Animal {
+
     #ferido
     constructor(nome, idade, cor, castrado, raça, ferido) {
         super(nome, idade, cor)
         this.castrado = castrado
         this.#ferido = ferido
         this.raça = raça
+        this.especie = "cachorro"
+        Animal.chama.unshift(this.nome)
     }
     latir() {
         console.log("au au")
@@ -134,6 +144,9 @@ Nossa veterinária agora atende quatro espécies diferentes de animais: dois dom
             return this.castrado = true
         }
     }
+}
+
+// let Rock = new Dog("Rock", 2, "preto", false, "vira-lata", true)
 
 3. Hamster
 ```
@@ -153,10 +166,12 @@ Nossa veterinária agora atende quatro espécies diferentes de animais: dois dom
   - Ao consultar um hamster, você deve brincar com ele para que ele não fique estressado e tente fugir.
 
   class Hamster extends Animal {
+
     constructor(nome, idade, cor, tipo) {
         super(nome, idade, cor)
         this.tipo = tipo
         this.estressado = true
+        this.especie = "hamster"
     }
 
     brincar() {
@@ -179,8 +194,10 @@ Nossa veterinária agora atende quatro espécies diferentes de animais: dois dom
             console.log(`Atenção, ${this.nome}, mordeu você!`)
         }
     }
-   
+
 }
+
+// let ronaldinho = new Hamster("Ronaldinho",3,"malhado","sírio")
 
 
 4. Papagaio
@@ -200,7 +217,12 @@ Nossa veterinária agora atende quatro espécies diferentes de animais: dois dom
 ```
  - Ao brincar com ou alimentar um papagaio, ele deve falar com você.
 
- class Papagaio extends Animal {
+class Papagaio extends Animal {
+
+    constructor(nome, idade, cor) {
+        super(nome, idade, cor)
+        this.especie = "papagaio"
+    }
 
     falar() {
         console.log("Loro, quer biscoito?")
@@ -223,6 +245,8 @@ Nossa veterinária agora atende quatro espécies diferentes de animais: dois dom
     }
 
 }
+
+//let Loro = new Papagaio("Louro", 10, "verde")
 
 5. Outros
   - Sempre que vacinar um paciente, você deve adicionar uma nova consulta na lista. O mesmo vale para castrar um animal.

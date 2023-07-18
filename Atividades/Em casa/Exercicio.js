@@ -21,10 +21,8 @@ class Animal {
         this.consultas.unshift(new Date())
     }
 
-    chamar() {
-        if (this.social == true || this.especie == "cachorro") {
-            return Animal.chama
-        }
+    static chamar() {
+        return Animal.chama
     }
 
     alimentar() {
