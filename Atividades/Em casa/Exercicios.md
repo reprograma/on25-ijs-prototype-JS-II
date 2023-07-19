@@ -2,8 +2,8 @@ Nome:Ellie
 
 # Lição feita!
 
-```
-    class Historic {
+```js
+class Historic {
   constructor() {
     this.consultas = [];
     this.vacinas = [];
@@ -210,8 +210,6 @@ function chamar(listaAnimais) {
   console.log("psiu");
   return listaAnimais.filter(isAnimalCallable);
 }
-
-
 ```
 
 Nossa veterinária agora atende quatro espécies diferentes de animais: dois domésticos (`Gato` e `Cachorro`), e dois exóticos (`Hamster` e `Papagaio`). Usando o que você aprendeu essa semana (classes, herança, sobrescritas, campos privados...) e os exemplos de animais abaixo, escreva um sistema que atenda aos critérios listados:
