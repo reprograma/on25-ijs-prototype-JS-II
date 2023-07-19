@@ -159,7 +159,7 @@ pepo.castrar()
 
 let zeus = new Cachorro ('Zeus', 3, 'preto', false, true, 'bacê')
 zeus.latir()
-zeus.brincar() // AQUI
+zeus.brincar() 
 zeus.castrar()
 let lilo = new Cachorro ('Lilo', 1, 'preto', true, false, 'bacê')
 lilo.brincar()
