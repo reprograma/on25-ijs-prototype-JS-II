@@ -155,7 +155,7 @@ let pipoca = new Hamster("pipoca", 4, "marrom", "hamster");
 let zezinho = new Papagaio("Zezinho", 2, "verde");
 
 // array com os animais 
-const animais = [bela, marciaTeresa, gudan, pipoca, zezinho];
+const listaAnimais = [bela, marciaTeresa, gudan, pipoca, zezinho];
 
 // Chamando a função
 const animaisQueResponderam = chamar(listaAnimais);
