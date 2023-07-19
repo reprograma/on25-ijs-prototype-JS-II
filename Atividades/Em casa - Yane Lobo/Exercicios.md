@@ -85,7 +85,7 @@ Nossa veterinária agora atende quatro espécies diferentes de animais: dois dom
 
 5. Outros
   - Sempre que vacinar um paciente, você deve adicionar uma nova consulta na lista. O mesmo vale para castrar um animal.
-  - Você deve ter uma função `chamar()`, que recebe uma lista de animais e retorna quais dos animais da lista responderam e vieram brincar. Todos os cachorros respondem quando chamados, assim como os gatos que são sociais. Hamsters, papagaios e gatos não sociais não virão.
+  - Você deve ter uma função `chamar()`, que recebe uma lista de animais e retorna quais dos animais da lista responderam e vieram brincar. Todos os cachorros respondem quando chamados, assim como os gatos que são sociais. Hamsters, papagaios e gatos não sociais não virão. (tipos de animais ou animais em específico?)  //vacinas
   - Tentar castrar um animal que já está castrado deve retornar um erro.
 
 **Dica:** assinaturas possíveis para as funções:
