@@ -1,5 +1,9 @@
 1. Adicione uma função `quantasChaves()` a **todos** os objetos, que retorna quantas chaves aquele objeto possui.
 
+function Cachorro (nome, idade, cor, castrado, raça){
+    
+}
+
 2. A partir do nosso objeto de `Cachorro` da semana passada, escreva um novo construtor que utilize classes. Lembre-se que cachorros precisam `latir()`.
 ```
 {
