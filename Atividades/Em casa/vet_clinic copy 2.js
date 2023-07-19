@@ -3,7 +3,7 @@ class Animal {
     this.nome = nome;
     this.idade = idade;
     this.cor = cor;
-    this.checkup = [];
+    this.checkup = []; //hard code - valor já está definido, não precisa estar no parametro
   }
 
   checkups() {

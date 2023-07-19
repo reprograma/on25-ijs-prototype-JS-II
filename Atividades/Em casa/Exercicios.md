@@ -81,7 +81,7 @@ Nossa veterinária agora atende quatro espécies diferentes de animais: dois dom
     alimentar(),
 }
 ```
- - Ao brincar com ou alimentar um papagaio, ele deve falar com você.
+ - Ao brincar com ou alimentar um papagaio, ele deve falar com você. OK
 
 5. Outros
   - Sempre que vacinar um paciente, você deve adicionar uma nova consulta na lista. O mesmo vale para castrar um animal.
