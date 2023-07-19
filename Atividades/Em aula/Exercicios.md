@@ -1,5 +1,13 @@
 1. Adicione uma função `quantasChaves()` a **todos** os objetos, que retorna quantas chaves aquele objeto possui.
 
+//vai utilizar uma função já construida em aula
+function quantasChaves(){
+    return Object.keys(this).length
+}
+
+Object.prototype.quantasChaves = quantasChaves
+nina.quantasChaves() ou {}.quantasChaves() -> se eu não tiver declarado a função
+
 2. A partir do nosso objeto de `Cachorro` da semana passada, escreva um novo construtor que utilize classes. Lembre-se que cachorros precisam `latir()`.
 ```
 {

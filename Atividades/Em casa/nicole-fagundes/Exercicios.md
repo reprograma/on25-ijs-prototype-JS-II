@@ -1,6 +1,7 @@
-Nome:
+Nome: Nicole Siqueira Fagundes
 
 Nossa veterinária agora atende quatro espécies diferentes de animais: dois domésticos (`Gato` e `Cachorro`), e dois exóticos (`Hamster` e `Papagaio`). Usando o que você aprendeu essa semana (classes, herança, sobrescritas, campos privados...) e os exemplos de animais abaixo, escreva um sistema que atenda aos critérios listados:
+
 
 1. Gatos
 ```
@@ -26,6 +27,7 @@ Nossa veterinária agora atende quatro espécies diferentes de animais: dois dom
  - Gatos sociáveis ronronam ao serem acariciados. Se um gato não for sociável, ele deve silvar.
  - Você pode tornar um gato sociável alimentando ele com uma das comidas favoritas dos gatos: frango, sachê ou peixe.
 
+
  2. Cachorro
  ```
  {
@@ -48,6 +50,7 @@ Nossa veterinária agora atende quatro espécies diferentes de animais: dois dom
 }
  ```
   - Cachorros costumam esconder quando estão feridos. Use um campo privado para essa informação, e só a exiba ao tentar `brincar()` com um cãozinho que está ferido.
+
 
 3. Hamster
 ```
@@ -83,6 +86,7 @@ Nossa veterinária agora atende quatro espécies diferentes de animais: dois dom
 ```
  - Ao brincar com ou alimentar um papagaio, ele deve falar com você.
 
+
 5. Outros
   - Sempre que vacinar um paciente, você deve adicionar uma nova consulta na lista. O mesmo vale para castrar um animal.
   - Você deve ter uma função `chamar()`, que recebe uma lista de animais e retorna quais dos animais da lista responderam e vieram brincar. Todos os cachorros respondem quando chamados, assim como os gatos que são sociais. Hamsters, papagaios e gatos não sociais não virão.
@@ -110,3 +114,4 @@ function miar() { ... }
 
 function vacinar(vacina) { ... }
 ```
+
