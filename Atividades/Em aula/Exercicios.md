@@ -1,5 +1,9 @@
 1. Adicione uma função `quantasChaves()` a **todos** os objetos, que retorna quantas chaves aquele objeto possui.
 
+function Cachorro (nome, idade, cor, castrado, raça){
+    
+}
+
 ```
 function quantasChaves() {
     return Object.keys(this).length
