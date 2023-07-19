@@ -7,12 +7,6 @@ class AnimalDomestico {
     this.vacinas = [];
     this.castrado = castrado;
   }
-  consultar(data) {
-    this.consultas.unshift(data);
-  }
-  vacinar(vacina) {
-    this.vacinas.push(vacina);
-  }
 }
 
 class Gato extends AnimalDomestico {
@@ -36,9 +30,19 @@ class Gato extends AnimalDomestico {
       console.log("schiiii");
     }
   }
-  vacinar(vacina, data) {
+  vacinar(vacina) {
     this.vacinas.push(vacina);
-    this.consultar(data);
+    this.consultas.unshift(new Date());
+  }
+
+  castrar() {
+    if (this.castrado == true) {
+      console.log(` ${this.nome}, já está castrado.`);
+    } else {
+      console.log(`${this.nome}, foi castrado`);
+      this.consultas.unshift(new Date());
+      return (this.castrado = true);
+    }
   }
 
   alimentar() {
@@ -52,7 +56,6 @@ class Gato extends AnimalDomestico {
 Gato.prototype.especie = "doméstico";
 
 nina = new Gato("Nina", 1.5, "frajola", true, false, false);
-nina.vacinar("raiva", "2023-5-12");
 
 class Cachorro extends AnimalDomestico {
   #ferido;
@@ -75,21 +78,22 @@ class Cachorro extends AnimalDomestico {
       console.log(`${this.nome} está ferido e precisa de cuidados!`);
     }
   }
-  vacinar(vacina, data) {
+  castrar() {
+    if (this.castrado == true) {
+      console.log(` ${this.nome}, já está castrado.`);
+    } else {
+      console.log(`${this.nome}, foi castrado`);
+      this.consultas.unshift(new Date());
+      return (this.castrado = true);
+    }
+  }
+  vacinar(vacina) {
     this.vacinas.push(vacina);
-    this.consultar(data);
+    this.consultas.unshift(new Date());
   }
 }
 
 Cachorro.prototype.especie = "doméstico";
-
-Cachorro.prototype.consultar = (dataConsulta) => {
-  this.consultas.push(dataConsulta);
-};
-
-Cachorro.prototype.vacinar = (vacina) => {
-  this.vacinas.push(vacina);
-};
 
 zeus = new Cachorro("zeus", 3.5, "preto", false, "labrador", true);
 
@@ -129,7 +133,6 @@ class Hamster extends AnimalExotico {
 Hamster.prototype.especie = "exótico";
 
 iogurte = new Hamster("Iogurte", 1.5, "branco e laranja", "sírio");
-console.log(iogurte);
 
 class Papagaio extends AnimalExotico {
   constructor(nome, idade, cor) {
@@ -158,3 +161,5 @@ class Papagaio extends AnimalExotico {
 Papagaio.prototype.especie = "exótico";
 
 jose = new Papagaio("José", 13, "verde");
+
+//Não consegui até o meu momento fazer o item 5 e fazer retornar a consulta quando adicionada a vacina.
