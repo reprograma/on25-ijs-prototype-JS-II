@@ -1,37 +1,75 @@
 class Animal {
-  constructor(nome, idade, cor) {
-    this.nome = nome;
-    this.idade = idade;
-    this.cor = cor;
+  constructor(name, age, color) {
+    this.name = name;
+    this.age = age;
+    this.color = color;
     this.checkup = [];
   }
 
   checkups() {
-    let tempo = new Date();
-    let checkupDate = tempo.toGMTString();
+    let time = new Date();
+    let checkupDate = time.toGMTString();
     this.checkup.push(checkupDate);
     this.checkup.sort((dateA, dateB) => dateB - dateA);
     console.log(this.checkup);
   }
 }
 //-----------------------------------------------------------------------
-class Gato extends Animal {
-  constructor(nome, idade, cor, externo, social, checkup) {
-    super(nome, idade, cor, checkup);
-    this.externo = externo;
+class DomesticType extends Animal {
+  constructor(name, age, color, checkup, neutered) {
+    super(name, age, color, checkup);
+    this.vaccine = [];
+    this.neutered = neutered;
+  }
+
+  vaccinate(vaccines) {
+    this.vaccine.push(vaccines);
+    console.log(this.vaccine);
+    super.checkups();
+  }
+
+  neuter() {
+    if (this.neutered == true) {
+      console.log("status: castrado")
+    } else {
+      this.neutered = true;
+      super.checkups();
+    }
+  }
+
+  checkups() {
+    super.checkups();
+    if (this.vaccine.length > 0) {
+      console.log(this.checkup);
+    } else if (this.neutered) {
+      console.log(`${this.checkup} status realizado`);
+    } else if (!this.neutered) {
+      console.log(`${this.checkup} status`);
+    }
+  }
+
+}
+
+
+//----------------------------------------------------------------------
+
+class Cat extends DomesticType {
+  constructor(name, age, color, extern, social, checkup) {
+    super(name, age, color, checkup);
+    this.extern = extern;
     this.social = social;
   }
 
-  miar() {
+  meow() {
     console.log("miau miau miau");
   }
 
-  alimentar() {
+  feed() {
     this.social = true;
     console.log(`Miau comi todo o sache. Agora quero carinho`);
   }
 
-  acariciar() {
+  pet() {
     if (this.social) {
       console.log(`Rororon`);
     } else {
@@ -42,75 +80,85 @@ class Gato extends Animal {
 
 //-------------------------------------------------------------------
 
-class Dog extends Animal {
-  #escondido;
+class Dog extends DomesticType {
+  #hidden;
 
-  constructor(nome, idade, cor, checkup, escondido) {
-    super(nome, idade, cor, checkup);
-    this.#escondido = escondido;
-    this.ferido = false;
+  constructor(name, age, color, checkup, hidden) {
+    super(name, age, color, checkup);
+    this.#hidden = hidden;
+    this.injury = false;
   }
 
   bark() {
     console.log("Au Au Au");
   }
 
-  alimentar() {
+  feed() {
     console.log(`Quero franguinho, estou cansada de ração!`);
   }
 
-  acariciar() {
+  pet() {
     console.log(`AU AU AU coça minha barrinha`);
   }
 
-  esconder() {
-    this.ferido = true;
+  hide() {
+    this.injury = true;
     console.log(`buah buah, vou para minha casinha`);
   }
 
-  brincar() {
-    if (this.ferido) {
-      let choro = `Não quero brincar, ${this.#escondido}`;
-      console.log(`${this.nome} onde você está? Vamos brincar`);
+  play() {
+    if (this.injury) {
+      let choro = `Não quero brincar, ${this.#hidden}`;
+      console.log(`${this.name} onde você está? Vamos brincar`);
       console.log(choro);
-      console.log(`${this.nome}, vamos para o veterinário agora!`);
+      console.log(`${this.name}, vamos para o veterinário agora!`);
     } else {
-      console.log(`${this.nome} onde você está? Vamos brincar`);
+      console.log(`${this.name} onde você está? Vamos brincar`);
       console.log(`Au Au Au ...Cadê minha bolinha. Au Au Au`);
     }
   }
 }
+//-----------------------------------------------------------------
 
+function call(animalList) {
+  let animalRequestList = []
+  animalList.filter(animal => {
+    if (animal instanceof Dog || (animal instanceof Cat && animal.social == true)) {
+      animalRequestList.push(animal.name)
+    }
+  })
+  return animalRequestList
+}
 //-----------------------------------------------------------------
 
 class Parrot extends Animal {
-  constructor(nome, idade, cor, checkup) {
-    super(nome, idade, cor, checkup);
-    this.comida = false;
-    this.brinquedo = false;
+  constructor(name, age, color, checkup) {
+    super(name, age, color, checkup);
+    this.food = false;
+    this.toy = false;
   }
 
-  alimentar() {
-    this.comida = true;
+  feed() {
+    this.food = true;
     console.log(`Hora da minha comida!`);
   }
 
-  brincar() {
-    this.brinquedo = true;
-    console.log(`Hora de brincar om minha cordinha!`);
+  play() {
+    this.toy = true;
+    console.log(`Hora de play om minha colordinha!`);
   }
-  acariciar() {
+  pet() {
     console.log(`loro, loro`);
   }
 
-  falar() {
-    if (this.brinquedo || this.comida) {
-      console.log(`${this.nome}, me conte uma piada`);
+  talk() {
+    if (this.toy || this.food) {
+      console.log(`${this.name}, me conte uma piada`);
       console.log(
         "...Tentaram me vender um óculos sem armação. Não comprei, era armação. hahaha"
       );
     } else {
-      console.log(`${this.nome} me conte uma piada`);
+      console.log(`${this.name} me conte uma piada`);
       console.log(`...............`);
     }
   }
@@ -119,29 +167,29 @@ class Parrot extends Animal {
 //-------------------------------------------------------------------
 
 class Mouse extends Animal {
-  constructor(nome, idade, cor, checkup) {
-    super(nome, idade, cor, checkup);
-    this.calmo = false;
+  constructor(name, age, color, checkup) {
+    super(name, age, color, checkup);
+    this.serenity = false;
   }
 
-  alimentar() {
+  feed() {
     console.log(`Hora da minha comida!`);
   }
 
-  brincar() {
-    this.calmo = true;
+  play() {
+    this.serenity = true;
     console.log(`Está calmo`);
   }
-  acariciar() {
+  pet() {
     console.log(`snif sniff`);
   }
 
   checkups() {
     super.checkups();
-    if (this.calmo) {
-      let calmo = `fufufu `;
-      console.log(`${this.nome} vou te examinar`);
-      console.log(calmo);
+    if (this.serenity) {
+      let serenity = `fufufu `;
+      console.log(`${this.name} vou te examinar`);
+      console.log(serenity);
     } else {
       this.checkup.pop();
       console.log(this.checkup);
@@ -150,11 +198,33 @@ class Mouse extends Animal {
 }
 
 //--------------------------------------------------------------------------------
+let meowth = new Cat("Meowth", 24, "black", true, false,false);
+meowth;
+meowth.meow();
+meowth.checkups();
+meowth.feed();
+meowth.pet();
+meowth.vaccinate("Anti-rabies");
+meowth.neuter();
 
-function chamar(animal) {
-  if (animal instanceof Gato) {
-    console.log("Use uma cordinha");
-  } else if (animal instanceof Cachorro) {
-    console.log("Use uma cordinhabolinh");
-  }
-}
+let suzy = new Dog("Suzy", 24, "black",true,"minha perna está doendo");
+suzy;
+suzy.bark();
+suzy.checkups();
+suzy.hide();
+suzy.play();
+suzy.escondido;
+suzy.feed();
+suzy.pet();
+
+let candy = new Mouse("candy", 1.5 , "branco");
+
+candy.checkups()
+candy.play()
+candy
+
+
+let jade = new Parrot("Jade", 13, "verde");
+jade.talk();
+jade.talk();
+jade.checkups()
