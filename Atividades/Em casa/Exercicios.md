@@ -1,5 +1,7 @@
 Nome: Alexandra Ribeiro
 
+## Exercício
+
 Nossa veterinária agora atende quatro espécies diferentes de animais: dois domésticos (`Gato` e `Cachorro`), e dois exóticos (`Hamster` e `Papagaio`). Usando o que você aprendeu essa semana (classes, herança, sobrescritas, campos privados...) e os exemplos de animais abaixo, escreva um sistema que atenda aos critérios listados:
 
 1. Gatos
@@ -109,4 +111,182 @@ function latir() { ... }
 function miar() { ... }
 
 function vacinar(vacina) { ... }
+```
+
+## Resposta
+
+### Animal
+```
+class Animal {
+  constructor(nome, idade, cor) {
+    this.nome = nome
+    this.idade = idade
+    this.cor = cor
+    this.consultas = []
+  }
+
+  acariciar() {
+    console.log(`Você fez carinho em ${this.nome}! :D`)
+  }
+
+  alimentar(comida) {
+    console.log(`${this.nome} comeu ${comida}`)
+  }
+
+  brincar() {
+    console.log(`Você brincou com ${this.nome}! :D`)
+  }
+
+  consultar() {
+    const hoje = new Date()
+    this.consultas.push(hoje)
+    console.log(`A consulta de hoje (dia ${hoje.getDate()}) foi adicionada ao histórico de ${this.nome}`)
+  }
+
+  static chamar(listaAnimais) {
+    return listaAnimais.filter( animal => (
+      (animal instanceof Cachorro) ||
+      (animal instanceof Gato && animal.social)
+    ))
+  }
+}
+```
+
+### Doméstico
+```
+class Domestico extends Animal {
+  constructor(nome, idade, cor, castrado) {
+    super(nome, idade, cor)
+    this.castrado = castrado
+    this.vacinas = []
+  }
+
+  vacinar(vacina) {
+    this.vacinas.push(vacina)
+    this.consultar()
+
+    console.log(`Nessa consulta, ${this.nome} recebeu a vacina ${vacina}`)
+  }
+
+  castrar() {
+    if (this.castrado) {
+      console.log(`Você não pode castrar novamente um animal que já foi castrado.`)
+    } else {
+      this.castrado = true
+      this.consultar()
+
+      console.log(`Nessa consulta, ${this.nome} passou pela castração.`)
+    }
+  }
+}
+```
+
+### Gato
+```
+class Gato extends Domestico {
+  static comidasFavoritas = ["frango", "sachê", "peixe"]
+
+  constructor(nome, idade, cor, castrado, externo, social) {
+    super(nome, idade, cor, castrado)
+    this.externo = externo
+    this.social = social
+  }
+
+  acariciar() {
+    let som = this.social ? "ron ron ron" : "hiiissssssss"
+    super.acariciar()
+    console.log(`${this.nome}: ${som}`)
+  }
+
+  alimentar(comida) {
+    super.alimentar(comida)
+
+    if(!this.social && Gato.comidasFavoritas.includes(comida)) {
+      this.social = true
+      console.log(`${this.nome} agora é social!`)
+    }
+  }
+} 
+```
+
+### Cachorro
+```
+class Cachorro extends Domestico {
+  #ferido
+
+  constructor(nome, idade, cor, castrado, raca, ferido) {
+    super(nome, idade, cor, castrado)
+    this.raca = raca
+    this.#ferido = ferido
+  }
+
+  brincar() {
+    if(this.#ferido) {
+      console.log(`${this.nome} não consegue brincar, porque está machucado.`)
+    } else {
+      super.brincar()
+    }
+  }
+}
+```
+
+### Hamster
+class Hamster extends Animal {
+  constructor(nome, idade, cor, tipo) {
+    super(nome, idade, cor)
+    this.tipo = tipo
+  }
+
+  consultar() {
+    super.brincar()
+    super.consultar()
+  }
+}
+
+### Papagaio
+```
+class Papagaio extends Animal {
+  falar() {
+    console.log(`${this.nome}: curupaco`)
+  }
+
+  alimentar(comida) {
+    super.alimentar(comida)
+    this.falar()
+  }
+
+  brincar() {
+    super.brincar()
+    this.falar()
+  }
+}
+```
+
+### Testando
+```
+let nina = new Gato("Nina", 1.5, "frajola", true, false, true)
+nina.acariciar()
+nina.alimentar("cenoura")
+nina.alimentar("peixe") 
+nina.brincar()
+nina.consultar()
+
+let chris = new Gato("Chris", 3, "branco e cinza", true, false, false)
+chris.acariciar()
+chris.alimentar("peixe")
+
+let zeus = new Cachorro("Zeus", 3, "preto", false, "labrador", false)
+let apollo = new Cachorro("Apollo", 2, "branco", false, "pitbull", true)
+zeus.brincar()
+apollo.brincar()
+
+let iogurte = new Hamster("Iogurte", 1.7, "branco e creme", "sírio")
+iogurte.consultar() 
+
+let jose = new Papagaio("José", 7, "verde")
+jose.brincar()
+
+let princeso = new Gato("Princeso", 4, "cinza", false, true, false)
+let tobias = new Gato("Tobias", 12, "branco", true, false, false)
+Animal.chamar([nina, chris, princeso, tobias, apollo, zeus, iogurte, jose]) 
 ```
