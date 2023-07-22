@@ -13,9 +13,9 @@ class Animal {
     
 
     acariciar = () => console.log(`${this.nome} está sendo acariciado.`);
-    
 
-    alimentar = () => console.log(`${this.nome} está comendo.`);
+    alimentar = (comida) => console.log(`${this.nome} está comendo ${comida}.`);
+    
     
 }
 
@@ -35,6 +35,7 @@ class AnimalDomestico extends Animal {
         this.castrado = true;
         console.log(`${this.nome} foi castrado`);
     };
+
 }
 
 
@@ -47,7 +48,6 @@ class Gato extends AnimalDomestico {
 
     alimentar = (comida) => {
         this.social = comida === "frango" || comida === "sachê" || comida === "peixe";
-        super.alimentar(comida);
       }
       
 
@@ -65,7 +65,11 @@ class Cachorro extends AnimalDomestico {
 
     #ferido;
 
-    brincar = () => this.#ferido ? console.log(`${this.nome} está escondido porque está ferido.`) : super.brincar();
+    setFerido = (estado) => {
+        this.#ferido = estado;
+      }
+
+    brincar = () => (this.#ferido ? console.log(`${this.nome} está escondido porque está ferido.`) : console.log(`${this.nome} está brincando.`));
 
     latir = () => console.log(`${this.nome} está latindo`);
 
@@ -73,10 +77,49 @@ class Cachorro extends AnimalDomestico {
         super.consultar();
         this.brincar();
     }
-
-
 }
 
-    
+class Hamster extends Animal {
+    constructor(nome, idade, cor, tipo, consultas) {
+        super(nome, idade, cor, consultas);
+        this.tipo = tipo;
+    }
+
+    brincar = () => console.log(`${this.nome} está brincando`);
+
+    consultar = () => {
+        super.consultar();
+        this.brincar();
+    }
+}
+
+class Papagaio extends Animal {
+    constructor(nome, idade, cor, consultas) {
+        super(nome, idade, cor, consultas);
+    }
+
+    brincar = () => console.log(`${this.name} está brincando.`)
+
+    alimentar = (comida) => {
+        super.alimentar(comida);
+    }
+
+    falar = () => {
+        this.brincar() || this.alimentar();
+        console.log(`${this.name} está falando.`)}
+}
+
+const gato = new Gato("Nina", 1.5, "frajola", ["raiva"], [], true, false, true);
+const cachorro = new Cachorro("Zeus", 3.5, "preto", [], [], false, "labrador");
+const hamster = new Hamster("Iogurte", 1.5, "branco e laranja", "sírio");
+const papagaio = new Papagaio("José", 13, "verde", []);
+
+
+
+//para testar é só chamar o animal e o método a ser testado como por exemplo:
+gato.alimentar("ovo");
+gato.miar();
+cachorro.brincar();
+
 
    
