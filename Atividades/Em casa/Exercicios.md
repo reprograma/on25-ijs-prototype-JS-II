@@ -1,10 +1,11 @@
-Nome:
+Nome:Jessica Baron
 
 ## Exercício
 
 Nossa veterinária agora atende quatro espécies diferentes de animais: dois domésticos (`Gato` e `Cachorro`), e dois exóticos (`Hamster` e `Papagaio`). Usando o que você aprendeu essa semana (classes, herança, sobrescritas, campos privados...) e os exemplos de animais abaixo, escreva um sistema que atenda aos critérios listados:
 
 1. Gatos
+
 ```
 {
     nome: "Nina",
@@ -25,33 +26,37 @@ Nossa veterinária agora atende quatro espécies diferentes de animais: dois dom
     alimentar(),
 }
 ```
- - Gatos sociáveis ronronam ao serem acariciados. Se um gato não for sociável, ele deve silvar.
- - Você pode tornar um gato sociável alimentando ele com uma das comidas favoritas dos gatos: frango, sachê ou peixe.
 
- 2. Cachorro
- ```
- {
-    nome: "Zeus",
-    idade: 3.5
-    cor: "preto",
-    castrado: false,
-    raça: "labrador",
-    vacinas: [],
-    consultas: [],
-    ferido: false,
+- Gatos sociáveis ronronam ao serem acariciados. Se um gato não for sociável, ele deve silvar.
+- Você pode tornar um gato sociável alimentando ele com uma das comidas favoritas dos gatos: frango, sachê ou peixe.
 
-    latir(),
-    vacinar(),
-    consultar(),
-    castrar(),
-    brincar(),
-    acariciar(),
-    alimentar(),
+2.  Cachorro
+
+```
+{
+   nome: "Zeus",
+   idade: 3.5
+   cor: "preto",
+   castrado: false,
+   raça: "labrador",
+   vacinas: [],
+   consultas: [],
+   ferido: false,
+
+   latir(),
+   vacinar(),
+   consultar(),
+   castrar(),
+   brincar(),
+   acariciar(),
+   alimentar(),
 }
- ```
-  - Cachorros costumam esconder quando estão feridos. Use um campo privado para essa informação, e só a exiba ao tentar `brincar()` com um cãozinho que está ferido.
+```
+
+- Cachorros costumam esconder quando estão feridos. Use um campo privado para essa informação, e só a exiba ao tentar `brincar()` com um cãozinho que está ferido.
 
 3. Hamster
+
 ```
 {
     nome: "Iogurte",
@@ -66,9 +71,11 @@ Nossa veterinária agora atende quatro espécies diferentes de animais: dois dom
     alimentar(),
 }
 ```
-  - Ao consultar um hamster, você deve brincar com ele para que ele não fique estressado e tente fugir.
+
+- Ao consultar um hamster, você deve brincar com ele para que ele não fique estressado e tente fugir.
 
 4. Papagaio
+
 ```
 {
     nome: "José",
@@ -83,14 +90,17 @@ Nossa veterinária agora atende quatro espécies diferentes de animais: dois dom
     alimentar(),
 }
 ```
- - Ao brincar com ou alimentar um papagaio, ele deve falar com você.
+
+- Ao brincar com ou alimentar um papagaio, ele deve falar com você.
 
 5. Outros
-  - Sempre que vacinar um paciente, você deve adicionar uma nova consulta na lista. O mesmo vale para castrar um animal.
-  - Você deve ter uma função `chamar()`, que recebe uma lista de animais e retorna quais dos animais da lista responderam e vieram brincar. Todos os cachorros respondem quando chamados, assim como os gatos que são sociais. Hamsters, papagaios e gatos não sociais não virão.
-  - Tentar castrar um animal que já está castrado deve retornar um erro.
+
+- Sempre que vacinar um paciente, você deve adicionar uma nova consulta na lista. O mesmo vale para castrar um animal.
+- Você deve ter uma função `chamar()`, que recebe uma lista de animais e retorna quais dos animais da lista responderam e vieram brincar. Todos os cachorros respondem quando chamados, assim como os gatos que são sociais. Hamsters, papagaios e gatos não sociais não virão.
+- Tentar castrar um animal que já está castrado deve retornar um erro.
 
 **Dica:** assinaturas possíveis para as funções:
+
 ```
 function acariciar() { ... }
 
