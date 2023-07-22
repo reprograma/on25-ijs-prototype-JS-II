@@ -1,125 +1,118 @@
 class Animal {
-    constructor (nome, idade, cor, consultas = []) {
-        this.nome = nome;
-        this.idade = idade;
-        this.cor = cor;
-        this.consultas = consultas;
+    constructor(name, age, color, checkups = []) {
+        this.name = name;
+        this.age = age;
+        this.color = color;
+        this.checkups = checkups;
     }
 
-    consultar = () => console.log(`${this.nome} foi consultado`);
+    consult = () => console.log(`${this.name} was checked`);
     
 
-    brincar = () => console.log(`${this.nome} está brincando.`)
+    play = () => console.log(`${this.name} is playing.`)
     
 
-    acariciar = () => console.log(`${this.nome} está sendo acariciado.`);
+    caress = () => console.log(`${this.name} is being caressed.`);
 
-    alimentar = (comida) => console.log(`${this.nome} está comendo ${comida}.`);
-    
-    
+    feed = (food) => console.log(`${this.name} is eating ${food}.`);
 }
 
-class AnimalDomestico extends Animal {
-    constructor (nome, idade, cor, vacinas, consultas, castrado) {
-        super(nome, idade, cor, consultas);
-        this.vacinas = vacinas;
-        this.castrado = castrado;
+class DomesticAnimal extends Animal {
+    constructor(name, age, color, vaccines, checkups, neutered) {
+        super(name, age, color, checkups);
+        this.vaccines = vaccines;
+        this.neutered = neutered;
     }
 
-    vacinar = (novaVacina) => {
-        this.vacinas.push(novaVacina);
-        console.log(`${novaVacina} aplicada a ${this.nome}`)
+    vaccinate = (newVaccine) => {
+        this.vaccines.push(newVaccine);
+        console.log(`${newVaccine} applied to ${this.name}`);
     };
 
-    castrar = () => {
-        this.castrado = true;
-        console.log(`${this.nome} foi castrado`);
+    neuter = () => {
+        this.neutered = true;
+        console.log(`${this.name} has been neutered`);
     };
-
 }
 
-
-class Gato extends AnimalDomestico {
-    constructor(nome, idade, cor, vacinas, consultas, castrado, externo, social) {
-        super(nome, idade, cor, consultas, vacinas, castrado);
-        this.externo = externo;
+class Cat extends DomesticAnimal {
+    constructor(name, age, color, vaccines, checkups, neutered, external, social) {
+        super(name, age, color, vaccines, checkups, neutered);
+        this.external = external;
         this.social = social;
     }
 
-    alimentar = (comida) => {
-        this.social = comida === "frango" || comida === "sachê" || comida === "peixe";
-      }
-      
+    feed = (food) => {
+        this.social = food === "chicken" || food === "sachet" || food === "fish";
+    }
 
-    miar = () => {
-        console.log(`${this.nome} está ${this.social ? "ronronando" : "silvando"}.`);  //decidi usar ternário, não sei se atrapalha a legibilidade do código.
+    meow = () => {
+        console.log(`${this.name} is ${this.social ? "purring" : "hissing"}.`);
     };
 }
 
-class Cachorro extends AnimalDomestico {
-    constructor(nome, idade, cor, vacinas, consultas, castrado, raça) {
-        super(nome, idade, cor, consultas, vacinas, castrado);
-        this.raça = raça;
-        this.#ferido = false;
+class Dog extends DomesticAnimal {
+    constructor(name, age, color, vaccines, checkups, neutered, breed) {
+        super(name, age, color, vaccines, checkups, neutered);
+        this.breed = breed;
+        this.#injured = false;
     }
 
-    #ferido;
+    #injured;
 
-    setFerido = (estado) => {
-        this.#ferido = estado;
-      }
+    setInjured = (state) => {
+        this.#injured = state;
+    }
 
-    brincar = () => (this.#ferido ? console.log(`${this.nome} está escondido porque está ferido.`) : console.log(`${this.nome} está brincando.`));
+    play = () => (this.#injured ? console.log(`${this.name} is hiding because it's injured.`) : console.log(`${this.name} is playing.`));
 
-    latir = () => console.log(`${this.nome} está latindo`);
+    bark = () => console.log(`${this.name} is barking`);
 
-    consultar = () => {
-        super.consultar();
-        this.brincar();
+    consult = () => {
+        super.consult();
+        this.play();
     }
 }
 
 class Hamster extends Animal {
-    constructor(nome, idade, cor, tipo, consultas) {
-        super(nome, idade, cor, consultas);
-        this.tipo = tipo;
+    constructor(name, age, color, type, checkups) {
+        super(name, age, color, checkups);
+        this.type = type;
     }
 
-    brincar = () => console.log(`${this.nome} está brincando`);
+    play = () => console.log(`${this.name} is playing`);
 
-    consultar = () => {
-        super.consultar();
-        this.brincar();
+    consult = () => {
+        super.consult();
+        this.play();
     }
 }
 
-class Papagaio extends Animal {
-    constructor(nome, idade, cor, consultas) {
-        super(nome, idade, cor, consultas);
+class Parrot extends Animal {
+    constructor(name, age, color, checkups) {
+        super(name, age, color, checkups);
     }
 
-    brincar = () => console.log(`${this.name} está brincando.`)
+    play = () => console.log(`${this.name} is playing.`)
 
-    alimentar = (comida) => {
-        super.alimentar(comida);
+    feed = (food) => {
+        super.feed(food);
     }
 
-    falar = () => {
-        this.brincar() || this.alimentar();
-        console.log(`${this.name} está falando.`)}
+    speak = () => {
+        this.play() || this.feed();
+        console.log(`${this.name} is talking.`)
+    }
 }
 
-const gato = new Gato("Nina", 1.5, "frajola", ["raiva"], [], true, false, true);
-const cachorro = new Cachorro("Zeus", 3.5, "preto", [], [], false, "labrador");
-const hamster = new Hamster("Iogurte", 1.5, "branco e laranja", "sírio");
-const papagaio = new Papagaio("José", 13, "verde", []);
+const cat = new Cat("Nina", 1.5, "tabby", ["rabies"], [], true, false, true);
+const dog = new Dog("Zeus", 3.5, "black", [], [], false, "labrador");
+const hamster = new Hamster("Yogurt", 1.5, "white and orange", "syrian");
+const parrot = new Parrot("Jose", 13, "green", []);
 
 
+//para testar é só chamar o animal e o método, por exemplo:
 
-//para testar é só chamar o animal e o método a ser testado como por exemplo:
-gato.alimentar("ovo");
-gato.miar();
-cachorro.brincar();
-
-
-   
+cat.feed("egg");
+cat.meow();
+dog.play();
